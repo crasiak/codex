@@ -19,6 +19,14 @@
 
 ## Protocol
 
+Standalone app-server supports `codex --profile work app-server --stdio`.
+It loads `$CODEX_HOME/work.config.toml` above the base `config.toml` and uses
+the selected profile file for configuration writes. Without `--profile`,
+configuration writes continue to target `config.toml`. The selection lasts
+for the lifetime of the server process; it is not a per-thread config override.
+App-server daemon-management and schema-generation subcommands do not accept
+this selector.
+
 Similar to [MCP](https://modelcontextprotocol.io/), `codex app-server` supports bidirectional communication using JSON-RPC 2.0 messages (with the `"jsonrpc":"2.0"` header omitted on the wire).
 
 Supported transports:

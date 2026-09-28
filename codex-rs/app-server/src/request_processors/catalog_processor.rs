@@ -659,7 +659,7 @@ impl CatalogRequestProcessor {
             }
         };
         let edits = vec![edit];
-        ConfigEditsBuilder::new(&self.config.codex_home)
+        ConfigEditsBuilder::for_config(&self.config)
             .with_edits(edits)
             .apply()
             .await
